@@ -220,8 +220,11 @@ abstract class Kohana_Auth {
 
 		foreach ($this->_config['salt_pattern'] as $i => $offset)
 		{
-			// Find salt characters, take a good long look...
-			$salt .= substr($password, $offset + $i, 1);
+			if ($offset != NULL)
+			{
+				// Find salt characters, take a good long look...
+				$salt .= substr($password, $offset + $i, 1);
+			}
 		}
 
 		return $salt;
